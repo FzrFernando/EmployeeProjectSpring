@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +22,13 @@ public class CompanyController {
 	
 	
 	@GetMapping("/listCompanies")
-	public String listCompanies(Model model) {
-		List<Company> listCompanies = companyService.getCompanies();
-		model.addAttribute("listCompanies", listCompanies);
+	public String listCompanies(Model model, @RequestParam("pageNumber") Optional<Integer> pageNumber,
+			@RequestParam("sizeNumber") Optional<Integer> sizeNumber) {
+		Page<Company> page = companyService.getCompanies(pageNumber.orElse(1), sizeNumber.orElse(10));
+		model.addAttribute("listCompanies", page);
+		model.addAttribute("currentPage",pageNumber.orElse(1));
+		model.addAttribute("totalPages",page.getTotalPages());
+		model.addAttribute("totalItems",page.getTotalElements());
 		return "listCompanies";
 	}
 	

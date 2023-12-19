@@ -1,9 +1,11 @@
 package com.jacaranda.EmployeeProject.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jacaranda.EmployeeProject.model.Company;
@@ -15,8 +17,9 @@ public class CompanyService {
 	@Autowired
 	private CompanyRepository companyRepository;
 	
-	public List<Company> getCompanies(){
-		return companyRepository.findAll();
+	public Page<Company> getCompanies(int pageNum, int pageSize){
+		Pageable pageable = PageRequest.of(pageNum -1, pageSize);
+		return companyRepository.findAll(pageable);
 	}
 	
 	public Optional<Company> getById(Integer id) {
