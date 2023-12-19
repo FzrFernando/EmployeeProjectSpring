@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="layout/head :: head"></div>
+<body>
+<nav th:replace="layout/menu :: menuJacaranda"></nav>
+
+<div style="padding-top: 40px;">
+	<table class="table table-bordered mx-auto" style="width: 90%;">
+		<caption>Lista de Compañías</caption>
+		<a href="/addCompany" class="btn btn-primary btn-lg active">Add Company</a>
+		<thead>
+			<tr class="table-primary">
+				<th scope="col">Id</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>City</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="company : ${listCompanies}">
+				<td th:text="${company.id}"></td>
+				<td th:text="${company.name}"></td>
+				<td th:text="${company.address}"></td>
+				<td th:text="${company.city}"></td>
+				<td><a th:href="@{'/editCompany?id=' + ${company.id}}">Edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
+
+<div th:insert="layout/footer :: pie"></div>
+</body>
+</html>

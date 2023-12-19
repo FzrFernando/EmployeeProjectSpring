@@ -1,0 +1,46 @@
+<nav th:fragment="menuJacaranda" xmlns:th="http://www.w3.org/1999/xhtml"   class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/">Teleasistencia Jacaranda</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Usuarios Teleasistencia</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="/listUser">Listar</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Proyectos</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="/employeeProject/project/list.jsp">Listar</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Compañías</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="/employeeProject/company/list.jsp">Listar</a></li>
+						<li><a class="dropdown-item" href="/employeeProject/company/listAdvance.jsp">Listar
+								ampliado</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link dropdown-toggle" href="/employeeProject/job.jsp">Trabajar</a></li>
+
+
+			</ul>
+				<a class="navbar-brand" href="/employeeProject/index.jsp">Salir</a>
+
+
+		</div>
+	</div>
+</nav>

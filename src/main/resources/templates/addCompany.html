@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="layout/head :: head"></div>
+<body>
+<nav th:replace="layout/menu :: menuJacaranda"></nav>
+
+	<form th:action="@{addCompanyDone}" th:object="${c}">
+		<h1>Compañía</h1>
+		
+		<p th:text="${result}"></p>
+		
+		<label>Name</label>
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		<input id="name" name="name" th:field="*{name}" type="text" required>
+		
+		<label>Address</label>
+		<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+		<input id="address" name="address" th:field="*{address}" type="text" required>
+		
+		<label>City</label>
+		<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+		<input id="city" name="city" th:field="*{city}" type="text" required>
+		
+		<button id="button" name="button">Add</button>
+	</form>
+
+<div th:insert="layout/footer :: pie"></div>
+</body>
+</html>
