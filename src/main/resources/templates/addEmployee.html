@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="layout/head :: head"></div>
+<body>
+<nav th:replace="layout/menu :: menuJacaranda"></nav>
+
+	<form th:action="@{addEmployeeDone}" th:object="${e}">
+		<h1>Empleado</h1>
+		
+		<p th:text="${result}"></p>
+		
+		<label>First Name</label>
+		<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+		<input id="firstName" name="firstName" th:field="*{firstName}" type="text" required>
+		
+		<label>Last Name</label>
+		<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+		<input id="lastName" name="lastName" th:field="*{lastName}" type="text" required>
+		
+		<label>Email</label>
+		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		<input id="email" name="email" th:field="*{email}" type="email" required>
+		
+		<label>Gender</label>
+		<span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
+		<input id="gender" name="gender" th:field="*{gender}" type="text" required>
+		
+		<button id="button" name="button">Add</button>
+	</form>
+
+<div th:insert="layout/footer :: pie"></div>
+</body>
+</html>

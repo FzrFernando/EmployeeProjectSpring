@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="layout/head :: head"></div>
+<body>
+<nav th:replace="layout/menu :: menuJacaranda"></nav>
+
+<div style="padding-top: 40px;">
+	<table class="table table-bordered mx-auto" style="width: 90%;">
+		<caption>Lista de Empleados</caption>
+		<a href="/addEmployee" class="btn btn-primary btn-lg active">Add Employee</a>
+		<thead>
+			<tr class="table-primary">
+				<th scope="col">Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Gender</th>
+				<th>Date Of Birth</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee : ${listEmployees}">
+				<td th:text="${employee.id}"></td>
+				<td th:text="${employee.firstName}"></td>
+				<td th:text="${employee.lastName}"></td>
+				<td th:text="${employee.email}"></td>
+				<td th:text="${employee.gender}"></td>
+				<td th:text="${employee.dateOfBirth}"></td>
+				<td><a th:href="@{'/editEmployee?id=' + ${employee.id}}">Edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+	 
+</div>
+<div>
+	Total Items: <a th:text = "${totalItems}" />
+	<a th:if="${currentPage > 1}" th:href="@{/listEmployees?pageNumber=1}">First</a>
+	<span th:unless="${currentPage > 1}">First</span>
+	<a th:if="${currentPage > 1}" th:href="@{'/listEmployees?pageNumber=' + ${currentPage - 1}}">Previous</a>
+	<span th:unless="${currentPage > 1}">Previous</span>
+	<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+		<a th:if="${currentPage != i}" th:href="@{'/listEmployees?pageNumber=' + ${i}}" th:text="${i}"></a>
+		<span th:unless="${currentPage != i}">
+			<a th:text="${i}"></a>
+		</span>
+&nbsp;
+	</span>
+	<a th:if="${currentPage < totalPages}" th:href="@{'/listEmployees?pageNumber=' + ${currentPage + 1}}">Next</a>
+	<span th:unless="${currentPage < totalPages}">Next</span>
+	<a th:if="${currentPage < totalPages}" th:href="@{'/listEmployees?pageNumber=' + ${totalPages}}">Last</a>
+	<span th:unless="${currentPage < totalPages}">Last</span>
+</div>
+
+<div th:insert="layout/footer :: pie"></div>
+</body>
+</html>
