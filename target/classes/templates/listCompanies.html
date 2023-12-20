@@ -11,7 +11,7 @@
 		<thead>
 			<tr class="table-primary">
 				<th scope="col">Id</th>
-				<th>Name</th>
+				<th><a th:href="@{'listCompanies?sortField=name&pageNumber=' +${currentPage}}">Name</a></th>
 				<th>Address</th>
 				<th>City</th>
 			</tr>
